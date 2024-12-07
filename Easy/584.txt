@@ -1,0 +1,8 @@
+584. Find Customer Referee
+12/06/2024
+SELECT
+    Customer.name
+FROM
+    Customer
+WHERE
+    Customer.referee_id != 2 OR Customer.referee_id IS NULL
