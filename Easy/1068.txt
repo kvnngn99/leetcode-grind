@@ -1,0 +1,10 @@
+1068. Product Sales Analysis I
+12/08/2024
+PostgreSQL
+JOINS
+
+SELECT
+    product_name, year, price
+FROM
+    Sales
+LEFT JOIN Product on Sales.product_id = Product.product_id

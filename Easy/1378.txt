@@ -1,0 +1,11 @@
+1378. Replace Employee ID With The Unique Identifier
+12/08/2024
+PostgreSQL
+JOINS
+
+SELECT
+    EmployeeUNI.unique_id, Employees.name
+FROM
+    Employees
+LEFT JOIN
+    EmployeeUNI on Employees.id = EmployeeUNI.id
