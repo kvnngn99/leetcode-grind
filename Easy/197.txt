@@ -1,0 +1,17 @@
+197. Rising Temperature
+12/09/2024
+PostgreSQL
+JOINS
+
+SELECT
+    today.id
+FROM
+    Weather AS yesterday
+CROSS JOIN
+    Weather AS today
+WHERE
+    today.recordDate - yesterday.recordDate = 1
+    AND today.temperature > yesterday.temperature
+;
+
+*note: Normally use lag but this time used crossjoin
