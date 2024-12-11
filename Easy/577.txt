@@ -1,0 +1,12 @@
+577. Employee Bonus
+12/20/2014
+PostgreSQL
+JOINS
+
+SELECT
+    Employee.name, Bonus.bonus
+FROM Employee
+LEFT JOIN
+    Bonus ON Employee.empId = Bonus.empId
+WHERE
+    bonus < 1000 OR bonus IS NULL
