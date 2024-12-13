@@ -3,7 +3,8 @@
 PostgreSQL
 Basic Aggregate Functions
 
--- Write your PostgreSQL query statement below
+--just commit
+-- Write your PostgreSQL query statement beloww
 SELECT
     c.id, 
     c.movie, 
