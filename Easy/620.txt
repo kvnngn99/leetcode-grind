@@ -1,0 +1,17 @@
+620. Not Boring Movies
+12/12/2024
+PostgreSQL
+Basic Aggregate Functions
+
+-- Write your PostgreSQL query statement below
+SELECT
+    c.id, 
+    c.movie, 
+    c.description, 
+    c.rating
+FROM
+    Cinema as c
+WHERE
+    c.id%2 = 1 AND c.description != 'boring'
+ORDER BY
+    c.rating DESC
