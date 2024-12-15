@@ -1,0 +1,17 @@
+1633. Percentage of Users Attended a Contest
+12/14/2024
+PostgreSQL
+Basic Aggregate Functions
+
+--did not finish within time, used help, need redo
+-- Write your PostgreSQL query statement below
+SELECT
+    r.contest_id,
+    ROUND( (COUNT(r.user_id) / (SELECT COUNT(user_id) FROM Users)::numeric )*100 ,2) AS percentage
+FROM
+    Register AS r
+GROUP BY
+    r.contest_id
+ORDER BY
+    percentage DESC,
+    r.contest_id ASC

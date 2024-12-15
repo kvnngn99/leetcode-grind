@@ -1,0 +1,32 @@
+1211. Queries Quality and Percentage
+12/14/2024
+PostgreSQL
+Basic Aggregate Functions
+
+-- SOLUTION 1, need to understand why used result, did not finish, got help
+-- Write your PostgreSQL query statement below
+SELECT
+    query_name,
+    ROUND( SUM(rating::numeric/position) / COUNT(result) ,2) AS quality,
+    ROUND( COUNT(rating) FILTER (WHERE rating < 3) / COUNT(rating)::numeric*100 ,2) AS poor_query_percentage
+FROM
+    Queries
+WHERE
+    query_name IS NOT NULL
+GROUP BY
+    query_name
+
+-- SOLUTION 2, You were working towards here but couldn't finish, 
+-- you were missing a SUM() to wrap the case when with rating
+-- must cast ::numeric at the right time, the earliest division
+-- Write your PostgreSQL query statement below
+SELECT
+    query_name,
+    ROUND( SUM(rating::numeric/position) / COUNT(query_name) ,2) AS quality,
+    ROUND( SUM(CASE WHEN rating < 3 THEN 1 ELSE 0 END)::numeric / COUNT(query_name)*100 ,2) AS poor_query_percentage
+FROM
+    Queries
+WHERE
+    query_name IS NOT NULL
+GROUP BY
+    query_name
