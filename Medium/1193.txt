@@ -1,0 +1,18 @@
+1193. Monthly Transactions I
+12/15/2024
+PostgreSQL
+Basic Aggregate Functions
+
+-- Write your PostgreSQL query statement below
+SELECT
+    to_char(trans_date, 'YYYY-MM') AS month,
+    country,
+    COUNT(trans_date) AS trans_count,
+    COUNT(state) FILTER (WHERE state = 'approved') AS approved_count,
+    SUM(amount) AS trans_total_amount,
+    COALESCE(SUM(amount) FILTER (WHERE state = 'approved'), 0) AS approved_total_amount
+FROM
+    Transactions
+GROUP BY
+    month,
+    country
