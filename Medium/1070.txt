@@ -1,0 +1,24 @@
+1070. Product Sales Analysis III
+12/17/2024
+PostgreSQL
+Sorting and Grouping
+
+-- -- Write your PostgreSQL query statement below
+WITH cte AS 
+    (SELECT
+        product_id,
+        MIN(year) as min_year
+    FROM
+        Sales
+    GROUP BY
+        product_id)
+
+SELECT
+    Sales.product_id,
+    Sales.year AS first_year,
+    quantity,
+    price
+FROM
+    Sales
+INNER JOIN   
+    cte on Sales.product_id = cte.product_id AND Sales.year = cte.min_year
