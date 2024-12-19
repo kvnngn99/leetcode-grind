@@ -1,0 +1,15 @@
+596. Classes More Than 5 Students
+12/18/2024
+PostgreSQL
+Sorting and Grouping
+
+--NOTE: can't have an aggrevate function in WHERE clause but can use it in HAVING clause
+-- Write your PostgreSQL query statement below
+SELECT
+    class
+FROM
+    Courses
+GROUP BY
+    class
+HAVING
+    COUNT(class) >= 5
