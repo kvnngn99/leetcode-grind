@@ -1,0 +1,25 @@
+1789. Primary Department for Each Employee
+12/20/2024
+PostgreSQL
+Advanced Select and Join
+
+--Had idea but need to know when to use subquery
+-- Write your PostgreSQL query statement below
+-- include employee_id with primary_flag 'y'
+-- include count(deparment) = 1
+SELECT
+    employee_id,
+    department_id
+FROM
+    Employee 
+WHERE employee_id IN (
+    SELECT
+        employee_id
+    FROM
+        Employee e1
+    GROUP BY
+        employee_id
+    HAVING
+        COUNT(employee_id) = 1
+)
+    OR primary_flag = 'Y'
