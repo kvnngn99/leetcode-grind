@@ -1,0 +1,17 @@
+1045. Customers Who Bought All Products
+12/19/2024
+PostgreSQL
+Sorting and Grouping
+
+-- HAVING clause, with SUBQUERY in it, 
+-- think about what youre exactly looking for a bit more, especially the product keys
+-- Write your PostgreSQL query statement below
+SELECT
+    customer_id
+FROM
+    Customer
+GROUP BY
+    customer_id
+HAVING
+    COUNT(DISTINCT product_key) = 
+        (SELECT COUNT(product_key) FROM Product)
