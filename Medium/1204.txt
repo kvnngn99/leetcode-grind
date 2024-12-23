@@ -1,0 +1,19 @@
+1204. Last Person to Fit in the Bus
+12/23/2024
+PostgreSQL
+Advance Select and Join
+
+SELECT
+    person_name
+FROM
+    (SELECT
+        person_name,
+        weight,
+        turn,
+        SUM(weight) OVER (ORDER BY turn) AS total_weight
+    FROM
+        Queue
+    ORDER BY
+        turn DESC)
+WHERE total_weight <= 1000
+LIMIT 1
