@@ -3,6 +3,7 @@
 Postgresql
 Advance Select and Join
 
+-- Does not feel like a proper SQL problem
 -- Write your PostgreSQL query statement below
 SELECT
     x,y,z,

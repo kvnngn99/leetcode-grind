@@ -1,0 +1,27 @@
+1907. Count Salary Categories
+12/23/2024
+PostgreSQL
+Advance Select and Join
+
+-- many solutions, this is simple one, learn UNION, care for 0, solution is very slow
+-- Write your PostgreSQL query statement below
+
+SELECT
+    'Low Salary' AS category,
+    COALESCE(COUNT(account_id) FILTER (WHERE income < 20000),0) AS accounts_count
+FROM
+    Accounts
+
+UNION
+SELECT
+    'Average Salary' AS category,
+    COALESCE(COUNT(account_id) FILTER (WHERE income between 20000 AND 50000),0) AS accounts_count
+FROM
+    Accounts
+
+UNION
+SELECT
+    'High Salary' AS category,
+    COALESCE(COUNT(account_id) FILTER (WHERE income > 50000),0) AS accounts_count
+FROM
+    Accounts

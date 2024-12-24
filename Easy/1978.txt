@@ -1,0 +1,19 @@
+1978. Employees Whose Manager Left The Company
+12/23/2024
+PostgreSQL
+Subqueries
+
+-- Write your PostgreSQL query statement below
+SELECT
+    employee_id
+FROM
+    Employees
+WHERE
+    manager_id NOT IN (
+        SELECT
+            employee_id
+        FROM
+            Employees
+    ) AND salary < 30000
+ORDER BY
+    employee_id
