@@ -3,6 +3,7 @@
 PostgreSQL
 Subqueries
 
+-- rememeber not in, use subquery for single column
 -- Write your PostgreSQL query statement below
 SELECT
     employee_id
