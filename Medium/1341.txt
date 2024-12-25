@@ -1,0 +1,51 @@
+1341. Movie Rating
+12/24/2024
+PostgreSQL
+Subqueries
+
+-- Write your PostgreSQL query statement below
+--user who has rated the greastest number of movies
+WITH user_name AS (SELECT
+    MovieRating.user_id,
+    COUNT(MovieRating.user_id),
+    name AS results
+FROM
+    MovieRating
+LEFT JOIN
+    Users ON Users.user_id = MovieRating.user_id
+GROUP BY
+    MovieRating.user_id,
+    name
+ORDER BY
+    count DESC,
+    name ASC
+LIMIT 1),
+
+--movie name with the highest avg rating in february 2020
+movie_name AS (SELECT
+    MovieRating.movie_id,
+    AVG(MovieRating.rating),
+    title AS results
+FROM
+    MovieRating
+LEFT JOIN
+    Movies ON Movies.movie_id = MovieRating.movie_id
+WHERE
+    MovieRating.created_at BETWEEN '2020-02-01'::date AND '2020-02-28'::date
+GROUP BY
+    MovieRating.movie_id,
+    title
+ORDER BY
+    avg DESC,
+    title ASC
+LIMIT 1)
+
+SELECT
+    results
+FROM
+    user_name
+UNION ALL
+SELECT
+    results
+FROM
+    Movie_name
