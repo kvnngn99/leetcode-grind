@@ -1,0 +1,24 @@
+626. Exchange Seats
+12/24/2024
+PostgreSQL
+Subqueries
+
+--Can have multiple WHEN THEN in one CASE END
+-- Write your PostgreSQL query statement below
+SELECT
+    id,
+    CASE
+        WHEN id%2 = 1 AND id =(
+            SELECT
+                MAX(id)
+            FROM
+                Seat
+        ) THEN Seat.student
+        WHEN id%2 = 1
+        THEN LEAD(Seat.student) OVER (ORDER BY id)
+        ELSE LAG(Seat.student) OVER (ORDER BY id)
+    END AS student
+FROM
+    Seat
+ORDER BY
+    id ASC
