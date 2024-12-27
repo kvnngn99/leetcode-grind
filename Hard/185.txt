@@ -1,0 +1,30 @@
+185. Department Top Three Salaries
+12/26/2024
+PostgreSQL
+Subqueries
+
+-- Was close to the solution but missing a few parts, need to understand the solution
+-- Write your PostgreSQL query statement below
+
+-- high earners = top three salaries, each department
+SELECT
+    Department.name AS Department,
+    Employee.name AS Employee,
+    Employee.salary as Salary
+FROM
+    Employee
+LEFT JOIN
+    Department ON Employee.departmentId = Department.id
+WHERE
+    (salary) IN (
+        SELECT
+            DISTINCT(salary)
+        FROM
+            Employee
+        WHERE Employee.departmentID = Department.id
+        ORDER BY
+            salary DESC
+        LIMIT 3
+    )
+ORDER BY
+    departmentID ASC
