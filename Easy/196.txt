@@ -1,0 +1,15 @@
+196. Delete Duplicate Emails
+12/28/2024
+PostgreSQL
+Advanced String Functions / Regex / Clause
+
+-- Write your PostgreSQL query statement below
+DELETE FROM
+    Person p1
+USING Person p2
+WHERE
+    p1 > p2
+    AND p1.email = p2.email     
+RETURNING
+    p1.id,
+    p1.email

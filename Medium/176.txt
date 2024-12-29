@@ -1,0 +1,23 @@
+176. Second Highest Salary
+12/28/2024
+PostgreSQL
+Advanced String Functions / Regex / Clause
+
+-- Write your PostgreSQL query statement below
+WITH highest_salary AS (
+    SELECT 
+        MAX(salary) AS salary
+    FROM 
+        Employee
+)
+
+SELECT 
+    MAX(salary) AS "SecondHighestSalary" 
+FROM 
+    Employee
+WHERE 
+    salary < (
+        SELECT 
+            salary 
+        FROM 
+            highest_salary);
