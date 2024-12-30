@@ -1,0 +1,54 @@
+1327. List the Products Ordered in a Period
+12/29/2024
+PostgreSQL
+Advanced String Functions / Regex / Clause
+
+-- Write your PostgreSQL query statement below
+
+--first filter data by date FEBRUARY 2020
+--then filter by sum units == 100
+-- WITH feb_orders AS (
+--     SELECT
+--         product_id,
+--         order_date,
+--         unit
+--     FROM
+--         Orders
+--     WHERE
+--         EXTRACT('month' from  order_date) = 2
+--         AND EXTRACT('year' from  order_date) = 2020
+-- ),
+-- one_hun_units AS (
+--     SELECT
+--         product_id,
+--         SUM(unit) as unit
+--     FROM
+--         feb_orders
+--     GROUP BY
+--         product_id
+--     HAVING
+--         SUM(unit) >= 100
+-- )
+-- SELECT
+--     product_name,
+--     unit
+-- FROM
+--     one_hun_units
+-- LEFT JOIN
+--     Products ON one_hun_units.product_id = Products.product_id
+
+SELECT
+    p.product_name,
+    SUM(o.unit) AS unit
+FROM
+    Products AS p
+LEFT JOIN
+    Orders AS o ON p.product_id = o.product_id
+WHERE
+    (EXTRACT('month' from  order_date) = 2
+    AND EXTRACT('year' from  order_date) = 2020)
+GROUP BY
+    p.product_id, product_name
+HAVING
+    SUM(unit) >= 100
+
