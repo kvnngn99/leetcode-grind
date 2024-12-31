@@ -1,0 +1,20 @@
+217. Contains Duplicate
+12/30/2024
+Python3
+Arrays & Hashing
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        ## Creating a dictionary to keep freqency
+        dict = {}
+
+        for num in nums:
+            ## if num exists in dictionary, there is dup, return true. else add
+            if num in dict:
+                return True
+            else:
+                dict[num] = 1
+        ## will reach here if false
+        return False
+
+    
