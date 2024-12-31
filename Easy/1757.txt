@@ -5,3 +5,5 @@ FROM
     Products
 WHERE
     low_fats = 'Y' AND recyclable = 'Y'
+
+RERUN ON 12/30/2024, did well
