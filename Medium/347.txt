@@ -1,0 +1,16 @@
+347. Top K Frequent Elements
+01/01/2025
+Python3
+Arrays & Hashing
+
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        dict = {}
+        ## num = key, keep track of num of keys = value
+        for num in nums:
+            if num in dict:
+                dict.update({ num : dict.get(num) + 1})
+            else:
+                dict[num] = 1
+        ##need to understand the last line
+        return sorted(dict, key=dict.get, reverse=True)[:k]

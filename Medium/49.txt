@@ -1,0 +1,18 @@
+49. Group Anagrams
+01/01/2025
+Python3
+Arrays & Hashing
+
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        ## create a temp key by sorting each str.
+        ## the values will be the actual str
+        res_dict = {}
+        ## first go through the list itself and create the temp key, real value
+        for str in strs:
+            temp_key = "".join(sorted(str))
+            if temp_key in res_dict:
+                res_dict.update({temp_key : res_dict.get(temp_key)+[str]})
+            else:        
+                res_dict[temp_key] = [str]
+        return list(res_dict.values())
