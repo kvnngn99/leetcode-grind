@@ -1,0 +1,26 @@
+36. Valid Sudoku
+01/02/2025
+Python3
+Arrays & Hashing
+
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        cols = defaultdict(set)
+        rows = defaultdict(set)
+        sub_boxes = defaultdict(set)
+
+        for curr_row in range(9):
+            for curr_col in range(9):
+                curr_num = board[curr_row][curr_col]
+                #if the number already exist in the following 3 arrays,
+                #this means that there is a duplicate which breaks the valid rule
+                if curr_num != '.':
+                    if curr_num in rows[curr_row] or curr_num in cols[curr_col] or curr_num in sub_boxes[( curr_row//3 , curr_col//3 )]:
+                        return False
+
+                    #adding them to each of the array to check for condition
+                    cols[curr_col].add(curr_num)
+                    rows[curr_row].add(curr_num)
+                    sub_boxes[(curr_row//3 , curr_col//3)].add(curr_num)
+        #if we leave the for loop, that means the board is valid
+        return True

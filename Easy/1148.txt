@@ -10,3 +10,5 @@ WHERE
     Views.author_id = Views.viewer_id
 ORDER BY
     id ASC
+
+RERUN 01/02/2025

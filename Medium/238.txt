@@ -1,0 +1,20 @@
+238. Product of Array Except Self
+01/02/2025
+Python3
+Arrays & Hashing
+
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        answer = [0] * len(nums)
+        prefix_product = 1
+        postfix_product = 1
+        ## This for loop get the product of every number before the current
+        for i in range(len(nums)):
+            answer[i] = prefix_product
+            prefix_product *= nums[i]
+        ## This for loop get the product of every number after the current
+        for j in range(len(nums)-1, -1, -1):
+            answer[j] *= postfix_product
+            postfix_product *= nums[j]
+        return answer
+
