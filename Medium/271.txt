@@ -1,0 +1,29 @@
+271. Encode and Decode Strings
+01/03/2025
+Python3
+Arrays & Hashing
+
+class Solution:
+    def encode(self, strs: List[str]) -> str:
+        ans = ""
+        for string in strs:
+            ans += str(len(string))+"#"+string
+        return ans
+
+    def decode(self, s: str) -> List[str]:
+        ans = []
+        num_ptr = 0
+
+        while num_ptr < len(s):
+            ## grabbing number
+            count = num_ptr
+            ## grabbing number, case when two digit or more
+            while s[count] != '#':
+                count += 1
+            lenght = int(s[num_ptr:count])
+            num_ptr = count + 1
+            count = count + length + 1
+
+            ans.append(s[num_ptr:count])
+            num_ptr = count
+        return ans
