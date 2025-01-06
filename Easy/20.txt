@@ -1,0 +1,20 @@
+20. Valid Parentheses
+01/05/2025
+Python3
+Stack
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+        myDict = {'(':')','{':'}','[':']'}
+
+        for bracket in s:
+            if bracket in myDict: #if left bracket, put in stack
+                stack.append(bracket)
+            
+            #Check if the stack is empty after popping,
+            #Check if the current right bracket doesn't match the latest bracket in the stack.
+            elif len(stack) == 0 or myDict[stack.pop()] != bracket:
+                return False
+        #return true if stack is empty
+        return len(stack) == 0
