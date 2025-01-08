@@ -13,3 +13,5 @@ WHERE
     Transactions.transaction_id IS NULL
 GROUP BY
     customer_id
+
+RERUN 1/8/2025, success

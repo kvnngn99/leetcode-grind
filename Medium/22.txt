@@ -1,0 +1,27 @@
+22. Generate Parentheses
+01/06/2025
+Python3
+Stack
+
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        res = []
+
+        def dfs(openP, closeP, curr_s):
+            ##Base Case
+            if openP + closeP == n * 2:
+                res.append(curr_s)
+                return
+            
+            ##Recursive Case
+            if openP < n:
+                dfs(openP + 1, closeP, curr_s+"(")
+            if closeP < openP:
+                dfs(openP, closeP+1, curr_s+")")
+        
+        dfs(0,0,"")
+        return res
+
+
+    #Time complexity:O(2^(2)n)
+    #Space complexity: O(n)
