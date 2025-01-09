@@ -15,3 +15,21 @@ WHERE
 ;
 
 *note: Normally use lag but this time used crossjoin
+
+-- Write your PostgreSQL query statement below
+SELECT
+    id as Id
+FROM
+    Weather
+INNER JOIN
+    (SELECT
+        id,
+        lag(temperature) OVER (ORDER BY recordDate) as prev_temp,
+        lag(recordDate) OVER (ORDER BY recordDate) as prev_date
+    FROM
+        Weather
+    ) USING (id)
+WHERE
+    recordDate = prev_date + interval '1 Day' AND temperature > prev_temp
+
+RERUN 1/8/2025, success

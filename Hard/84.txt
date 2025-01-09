@@ -1,0 +1,24 @@
+84. Largest Rectangle in Histogram
+01/08/2025
+Python3
+Stack
+
+NOTE: definitely need to study this problem
+class Solution:
+    def largestRectangleArea(self, heights: List[int]) -> int:
+        area = 0
+        stack = [-1]
+        
+        for i in range(len(heights)):
+            while stack[-1] != -1 and heights[i] <= heights[stack[-1]]:
+                height = heights[stack.pop()]
+                width = i - stack[-1] -1
+                area = max(area, height * width)
+            stack.append(i)
+        
+        while stack[-1] != -1:
+            height = heights[stack.pop()]
+            width = len(heights) - stack[-1] - 1
+            area = max(area, height * width)
+        
+        return area

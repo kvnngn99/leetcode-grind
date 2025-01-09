@@ -1,0 +1,18 @@
+853. Car Fleet
+01/08/2025
+Python3
+Stack
+
+NOTE: definitely need to study this problem
+class Solution:
+    def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
+        fleets = 0
+        prev_car = 0
+        for p, s in sorted(zip(position, speed) , reverse=True):
+            time_to_target = (target - p)/s
+            if prev_car < time_to_target:
+                fleets += 1
+                prev_car = time_to_target
+        return fleets
+    #time O(nLog(n)) due to sorting
+    #space O(n) due to using sorted()
