@@ -20,3 +20,5 @@ FROM
     Activity
 GROUP BY
     machine_id
+
+RERUN, no, need to remember to use casewhen
