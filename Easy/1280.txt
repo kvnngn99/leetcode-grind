@@ -22,3 +22,5 @@ GROUP BY
 ORDER BY
     student_id ASC,
     subject_name ASC
+
+RERUN , 1/13/2025, somewhat successful
