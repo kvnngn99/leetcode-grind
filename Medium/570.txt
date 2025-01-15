@@ -5,24 +5,42 @@ JOINS
 
 Had the right idea, but couldn't execute within time frame
 
+SOLUTION 1
 -- Write your PostgreSQL query statement below
 WITH temp AS (
-SELECT
-    e1.id,
-    e1.name
-FROM
-    Employee e1
-JOIN
-    Employee e2 ON e1.id = e2.managerId
-GROUP BY
-    e1.name,
-    e1.id
-HAVING
-    COUNT(e1.id) >= 5
+    SELECT
+        e1.id,
+        e1.name
+    FROM
+        Employee e1
+    JOIN
+        Employee e2 ON e1.id = e2.managerId
+    GROUP BY
+        e1.name,
+        e1.id
+    HAVING
+        COUNT(e1.id) >= 5
 )
-
 SELECT
     temp.name
 FROM
     temp
 ;
+
+SOLUTION 2
+-- Write your PostgreSQL query statement below
+SELECT
+    name
+FROM
+    Employee e
+INNER JOIN
+    (SELECT
+        managerId
+    FROM
+        Employee
+    GROUP BY
+        managerId
+    HAVING
+        COUNT(managerId) >= 5) AS e2 ON e2.managerId = e.id
+RERUN, 01/15/2025, successful
+

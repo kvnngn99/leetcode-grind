@@ -1,0 +1,28 @@
+11. Container With Most Water
+01/15/2025
+Python3
+Two Pointer
+
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        maxArea = 0
+
+        right = len(height) - 1
+        left = 0
+
+        # Idea is to work backwards?
+        while left < right:
+            # first calc the area
+            # get the smaller height * width for area
+            currArea = min(height[left], height[right]) * (right-left)
+            maxArea = max(currArea, maxArea)
+            
+            # to determine how we are going to move,
+            # if right side is bigger, move left pointer up
+            if height[left] < height[right]:
+                left += 1
+            # if left side is bigger, move right pointer down
+            else:
+                right -= 1
+            
+        return maxArea

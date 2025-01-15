@@ -1,0 +1,30 @@
+42. Trapping Rain Water
+01/15/2025
+Python3
+Two Pointer
+
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        totalWater = 0
+        left = 0
+        right = len(height) - 1
+        left_max = height[0]
+        right_max = height[(len(height) - 1)]
+
+        while left < right:
+            #take the smaller max height
+            if left_max < right_max: #if right side is higher, we deal with the left side
+                left += 1
+                if height[left] > left_max: #want to update left_max
+                    left_max = height[left]
+                water = left_max - height[left]
+                totalWater += water
+                
+            else: #left_max > right_max, if left side is higher, we deal with the right side
+                right -= 1
+                if height[right] > right_max: #updating right max
+                    right_max = height[right]
+                water = right_max - height[right]
+                totalWater += water
+                
+        return totalWater
