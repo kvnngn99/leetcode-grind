@@ -1,0 +1,68 @@
+21. Merge Two Sorted Lists
+01/15/2025
+Python3
+Linked List
+
+#NOTES: THERE IS A BETTER SOLUTION AND SHORTER, THIS ONE IS SLOW
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        #Have two list
+        #Check the value of the listnode from each list and compare which one is smaller
+        #if equal, take list1.
+        prev = None
+        curr1 = list1
+        curr2 = list2
+        #BASE CASE - SETTING THE STARTING POINT
+        if list1 == None and list2 == None:
+            return prev
+        elif list1 != None and list2 == None: #ONLY LIST1 EXIST
+            prev = curr1
+            curr1 = curr1.next
+        elif list2 != None and list1 == None: #ONLY LIST2 EXIST
+            prev = curr2
+            curr2 = curr2.next
+        else: #BOTH EXIST 
+            #setting the first prev based on the first val of each list
+            if curr1.val <= curr2.val:
+                prev = curr1
+                curr1 = curr1.next
+            else:
+                prev = curr2
+                curr2 = curr2.next
+        head = prev
+
+        #INTERATING THROUGH BOTH LIST
+        while curr1 != None or curr2 != None:
+            if curr1 != None and curr2 != None: #If both nodes from each list exist    
+                #compare the current head of each list
+                if curr1.val <= curr2.val: #adding from list1
+                    prev.next = curr1
+                    prev = prev.next
+                    
+                    #moving curr1 up the list
+                    curr1 = curr1.next
+                else: #adding from list2
+                    prev.next = curr2
+                    prev = prev.next
+
+                    #moving curr2 up the list
+                    curr2 = curr2.next
+            elif curr1 != None and curr2 == None: #curr1 has nodes, curr2 doesn't have a node
+                prev.next = curr1
+                prev = prev.next
+                
+                #moving curr1 up the list
+                curr1 = curr1.next
+            elif curr2 != None and curr1 == None: #curr2 has nodes, curr1 doesn't have a node
+                prev.next = curr2
+                prev = prev.next
+
+                #moving curr2 up the list
+                curr2 = curr2.next
+
+        return head
