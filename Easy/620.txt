@@ -16,3 +16,5 @@ WHERE
     c.id%2 = 1 AND c.description != 'boring'
 ORDER BY
     c.rating DESC
+
+rerun, successful, 01/16/2025
