@@ -15,3 +15,5 @@ GROUP BY
 ORDER BY
     percentage DESC,
     r.contest_id ASC
+
+RERUN, successful, 1/20/2025
