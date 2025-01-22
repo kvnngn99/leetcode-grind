@@ -1,0 +1,35 @@
+287. Find the Duplicate Number
+01/21/2025
+Python3
+Linked List / Two Pointer
+
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        #THIS IS THE SET/HASH TABLE METHOD
+        # mySet = set()
+
+        # for num in nums:
+        #     if num in mySet:
+        #         return num
+        #     else:
+        #         mySet.add(num)
+
+        #TWO POINTER METHOD/LINKED LIST STYLE
+        slow = nums[0]
+        fast = nums[0]
+
+        #finding the point where they meet. does not mean this is duplicate
+        while True:
+            slow = nums[slow]
+            fast = nums[nums[fast]]
+            if slow == fast:
+                break
+
+        #reset slow pointer to beginning, make them move at the same speed which will cause them to meet at the starting point of the cycle
+        #which is a duplicate
+        slow = nums[0]
+        while slow != fast:
+            slow = nums[slow]
+            fast = nums[fast]
+            
+        return slow
