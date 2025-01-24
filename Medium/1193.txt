@@ -16,3 +16,24 @@ FROM
 GROUP BY
     month,
     country
+
+    
+SOLUTION 2
+-- Write your PostgreSQL query statement below
+SELECT
+    to_char(trans_date, 'YYYY-MM') AS month,
+    country,
+    COUNT(amount) AS trans_count,
+    COUNT(amount) FILTER (WHERE state = 'approved') AS approved_count,
+    SUM(amount) AS trans_total_amount,
+    CASE 
+        WHEN SUM(amount) FILTER (WHERE state = 'approved') IS NULL
+        THEN 0 
+        ELSE SUM(amount) FILTER (WHERE state = 'approved')
+    END AS approved_total_amount
+FROM
+    Transactions
+GROUP BY
+    month,
+    country
+RERUN, successful, 1/23/2025, small blunder to_char
