@@ -24,3 +24,5 @@ WHERE (player_id, event_date) in (
     GROUP BY
         player_id
 )
+
+RERUN, unsuccessful, 01/27/2025, need to understand
