@@ -13,3 +13,5 @@ GROUP BY
     user_id
 ORDER BY
     user_id ASC
+
+RERUN, successful, 02/03/2025
