@@ -18,3 +18,5 @@ class Solution:
             if each_value != 0:
                 return False
         return True
+
+RERUN, unsuccessful (couldn't remember Python3 syntax), 02/03/2025
