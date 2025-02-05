@@ -1,0 +1,37 @@
+704. Binary Search
+02/04/2025
+Python3
+Binary Search
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        left = 0
+        right = len(nums)-1
+        middle = (right - left) // 2
+
+        while left < right:
+            
+            print("middle: ", middle, " nums[middle]:", nums[middle])
+            
+            if target == nums[middle]:
+                return middle
+
+            elif target > nums[middle]: 
+                ##going right side
+                left = middle + 1
+                print("new left:", left)
+                middle = ((right - left) //2) + left
+                print("new middle", middle, "num[middle]:", nums[middle])
+                
+
+            elif target < nums[middle]:
+                ## going left side
+                right = middle - 1
+                print("new right:", right)
+                middle =  (right - left) //2 + left
+                print("new middle", middle, "num[middle]:", nums[middle])
+
+        if target == nums[middle]:
+            return middle    
+
+        return -1
