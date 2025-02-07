@@ -23,3 +23,30 @@ GROUP BY
     e1.employee_id
 ORDER BY
     employee_id
+
+RERUN, successful, 02/06/2025
+-- Write your PostgreSQL query statement below
+WITH CTE AS (
+    SELECT
+        reports_to AS managers,
+        COUNT(reports_to) AS num_of_reports,
+        ROUND(AVG(age)) AS average_age
+    FROM
+        Employees
+    WHERE
+        reports_to IS NOT NULL
+    GROUP BY
+        reports_to
+)
+
+SELECT
+    employee_id,
+    name,
+    num_of_reports AS reports_count,
+    average_age
+FROM
+    Employees
+INNER JOIN
+    CTE ON Employees.employee_id = CTE.managers
+ORDER BY
+    employee_id
