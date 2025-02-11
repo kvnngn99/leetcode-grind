@@ -18,3 +18,5 @@ class Solution:
                 return False
         #return true if stack is empty
         return len(stack) == 0
+
+RERUN, successful, 02/08/2025

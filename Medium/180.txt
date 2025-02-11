@@ -22,3 +22,5 @@ WHERE
     num = prev_num AND prev_num = prev_prev_num
 GROUP BY
     num
+
+RERUN, successful, 02/10/2025
