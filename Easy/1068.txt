@@ -10,3 +10,4 @@ FROM
 LEFT JOIN Product on Sales.product_id = Product.product_id
 
 RERUN 1/5/2025, success
+RERUN 04/29/2025, did well
