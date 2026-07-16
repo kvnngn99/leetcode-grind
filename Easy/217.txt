@@ -18,3 +18,4 @@ class Solution:
         return False
 
 RERUN, successful, 02/04/2025
+RERUN, fail, 07/16/2026, Can only do bruteforce, need to rerun tomorrow
