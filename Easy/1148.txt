@@ -13,3 +13,4 @@ ORDER BY
 
 RERUN 01/02/2025,
 RERUN 04/29/2025, did well
+RERUN 07/20/2026, did ok, had to remember syntax
