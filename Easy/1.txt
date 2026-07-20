@@ -12,4 +12,24 @@ class Solution:
                 if nums[j] == diff:
                     return [i,j]
 
+#BETTER PYTHON SOLUTION THAT RUNS O(N) AND NOT O(N^2)
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        #Since we can only loop through nums once, cannot use nested forloops
+        #Want to use Hashmap
+        #The idea is we take the target number and subtract it by our current number to get a difference.
+        #With this difference, we will loop through the for loop to check and see if that difference is there, if it is, then we return our current number index, and the difference number index
+
+        myHashmap = {}
+        
+        for i in range(0, len(nums)):
+            diff = target - nums[i]
+            if diff in myHashmap:
+                return [i, myHashmap[diff]]
+            else:
+                myHashmap[nums[i]] = i
+        return -1 #no solutions found
+        
+
 RERUN, successful, 02/03/2025
+RERUN, unsuccessful (Have the logic but not the syntax for the logic), 07/20/2026

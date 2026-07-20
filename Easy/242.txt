@@ -19,4 +19,28 @@ class Solution:
                 return False
         return True
 
+#SECOND SOLUTION
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        #Base case where if both s and t have different length, return false immedately 
+        if (len(s) != len(t)):
+            return False
+
+        #creating a hashmap/dictionary that counts frequency of the char
+        myDict = {}
+
+        #adding every char from s into the dict and increment count
+        for s_char in s:
+            myDict[s_char] = myDict.get(s_char, 0) + 1
+        for t_char in t:
+            if t_char not in myDict or myDict[t_char] == 0:
+                return False
+            else:
+                myDict[t_char] -= 1
+        
+        #if we reached here, then the second for loop did not detect any unmatched character
+        return True
+       
+
 RERUN, unsuccessful (couldn't remember Python3 syntax), 02/03/2025
+RERUN, 07/20/2026, unsuccessful (need Python3 Hashmap syntax refresher)
